@@ -34,7 +34,7 @@ const loadExistingJestConfig = (basePath, options) => {
 const getModuleMappingsForJspm = (basePath, options) => {
     let mappings = jspmMappingReader(basePath, options);
 
-    if (!mappings){
+    if (!mappings) {
         console.warn("[gulp-jest-jspm-config]: didnt find any mappings for JSPM!");
         mappings = {};
     }
@@ -51,10 +51,13 @@ const getModuleDirectories = (config, options) => {
 };
 
 export const getJestConfig = (basePath, options) => {
+    options = getOptions(options);
+
     const config = loadExistingJestConfig(basePath, options);
 
     config.moduleNameMapper = {...getModuleMappingsForJspm(basePath, options), ...config.moduleNameMapper};
     config.moduleDirectories = getModuleDirectories(config, options);
+    config.rootDir = config.rootDir || basePath;
 
     return config;
 };
@@ -70,13 +73,11 @@ export const getJestConfig = (basePath, options) => {
  *          @param options.nodeModules - location of node modules dir (default: "./node_modules")
  */
 export default (options) => {
-    options = getOptions(options);
-
     const myStream = through.obj((file, enc, cb) => {
-        const jestConf = getJestConfig(file.cwd, options);
 
-        jestConf.rootDir = jestConf.rootDir || file.cwd;
-        myStream.pipe(gulpJest({config: jestConf})); //run jest through the gulp-jest plugin
+        myStream.pipe(gulpJest({
+            config: getJestConfig(file.cwd, options)
+        })); //run jest through the gulp-jest plugin
 
         cb(null, file);
     });

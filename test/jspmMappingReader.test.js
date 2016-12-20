@@ -1,29 +1,29 @@
-"use strict";
+describe("jspmMappingReader tests", () => {
+    "use strict";
 
-beforeAll(() => {
-    jest.mock("../src/jspmConfigLoader", () =>
-        jest.fn(() => ({})) //return empty object by default
-            .mockImplementationOnce(() => ({ //return object with mappings the first time
-                map: {
-                    actions: "src/actions/index",
-                    axios: "npm:axios@0.15.2",
-                    babel: "npm:babel-core@5.8.38"
-                },
-                packages: {
-                    "http://cinch.local:8084/consumer/jspm_packages/npm/readable-stream@2.2.2": {
-                        map: {
-                            "buffer": "github:jspm/nodelibs-buffer@0.1.0",
-                            "buffer-shims": "npm:buffer-shims@1.0.0",
-                            "core-util-is": "npm:core-util-is@1.0.2"
+    beforeAll(() => {
+        jest.mock("../src/jspmConfigLoader", () =>
+            jest.fn(() => ({})) //return empty object by default
+                .mockImplementationOnce(() => ({ //return object with mappings the first time
+                    map: {
+                        actions: "src/actions/index",
+                        axios: "npm:axios@0.15.2",
+                        babel: "npm:babel-core@5.8.38"
+                    },
+                    packages: {
+                        "http://cinch.local:8084/consumer/jspm_packages/npm/readable-stream@2.2.2": {
+                            map: {
+                                "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+                                "buffer-shims": "npm:buffer-shims@1.0.0",
+                                "core-util-is": "npm:core-util-is@1.0.2"
+                            }
                         }
                     }
-                }
-            }))
-            .mockImplementationOnce(()=>undefined)); //return undefined the second time
-});
+                }))
+                .mockImplementationOnce(()=>undefined)); //return undefined the second time
+    });
 
 
-describe("jspmMappingReader", () => {
     it("should parse systemjs configuration correctly", () => {
 
         const testBasePath = "./bla",
@@ -39,18 +39,18 @@ describe("jspmMappingReader", () => {
         expect(Object.keys(result)).toHaveLength(12);
 
         expect(result).toEqual({
-            '^actions$': '<rootDir>/src/actions/index',
-            '^actions/(.*)': '<rootDir>/src/actions/index/$1',
-            '^axios$': 'axios@0.15.2',
-            '^axios/(.*)': 'axios@0.15.2/$1',
-            '^babel$': 'babel-core@5.8.38',
-            '^babel/(.*)': 'babel-core@5.8.38/$1',
-            '^buffer$': 'jspm/nodelibs-buffer@0.1.0',
-            '^buffer/(.*)': 'jspm/nodelibs-buffer@0.1.0/$1',
-            '^buffer-shims$': 'buffer-shims@1.0.0',
-            '^buffer-shims/(.*)': 'buffer-shims@1.0.0/$1',
-            '^core-util-is$': 'core-util-is@1.0.2',
-            '^core-util-is/(.*)': 'core-util-is@1.0.2/$1'
+            "^actions$": "<rootDir>/src/actions/index",
+            "^actions/(.*)": "<rootDir>/src/actions/index/$1",
+            "^axios$": "axios@0.15.2",
+            "^axios/(.*)": "axios@0.15.2/$1",
+            "^babel$": "babel-core@5.8.38",
+            "^babel/(.*)": "babel-core@5.8.38/$1",
+            "^buffer$": "jspm/nodelibs-buffer@0.1.0",
+            "^buffer/(.*)": "jspm/nodelibs-buffer@0.1.0/$1",
+            "^buffer-shims$": "buffer-shims@1.0.0",
+            "^buffer-shims/(.*)": "buffer-shims@1.0.0/$1",
+            "^core-util-is$": "core-util-is@1.0.2",
+            "^core-util-is/(.*)": "core-util-is@1.0.2/$1"
         });
     });
 
