@@ -4,7 +4,8 @@
   "description": "Gulp plugin for running Jest tests on JSPM/SystemJS apps",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "prepublish": "gulp"
   },
   "repository": {
     "type": "git",

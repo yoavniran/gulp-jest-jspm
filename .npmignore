@@ -4,6 +4,6 @@ gulpfile.js
 .gitignore
 node_modules/
 test/
-/.coveralls.yml
+.coveralls.yml
 .idea/
 
