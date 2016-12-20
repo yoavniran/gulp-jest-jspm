@@ -5,3 +5,5 @@ gulpfile.js
 node_modules/
 test/
 /.coveralls.yml
+.idea/
+
