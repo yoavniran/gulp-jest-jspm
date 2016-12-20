@@ -73,7 +73,7 @@ export const getJestConfig = (basePath, options) => {
  *          @param options.loadSjsConfFile - whether to load the System JS config file (default: true)
  *          @param options.jspmPackages - location of jspm packages (default: "./jspm_packages")
  *          @param options.nodeModules - location of node modules dir (default: "./node_modules")
- *          @param options.displayWarnings - whether plugin will output warnings to console (default: false)
+ *          @param options.displayWarnings - whether the plugin will output warnings to console (default: false)
  */
 export default (options) => {
     const myStream = through.obj((file, enc, cb) => {

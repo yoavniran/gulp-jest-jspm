@@ -1,10 +1,14 @@
 {
-  "name": "gulp-jest-jspm-config",
+  "name": "gulp-jest-jspm",
   "version": "0.1.0",
   "description": "Gulp plugin for running Jest tests on JSPM/SystemJS apps",
   "main": "index.js",
   "scripts": {
     "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yoavniran/gulp-jest-jspm"
   },
   "keywords": [
     "gulp",
@@ -17,7 +21,7 @@
     "build"
   ],
   "author": "Yoav Niran",
-  "license": "MIT",
+  "license": "WTFPL",
   "dependencies": {
     "gulp-jest": "^0.6.3",
     "through2": "^2.0.3"
