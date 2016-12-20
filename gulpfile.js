@@ -3,10 +3,12 @@
 const gulp = require("gulp"),
     del = require("del"),
     gulpBabel = require("gulp-babel"),
-    gulpJest = require("gulp-jest").default;
+    gulpJest = require("gulp-jest").default,
+    gulpCoveralls = require("gulp-coveralls");
 
 gulp.task("clean:lib", () => del(["lib/**/*"]));
 gulp.task("clean:testOutput", () => del(["test/output/**/*"]));
+
 
 gulp.task("build", ["clean:lib"], () =>
     gulp.src("src/**/*.js")
@@ -21,12 +23,23 @@ const runTest = (withCover) =>
             "config": {
                 "testPathDirs": ["./test"],
                 "collectCoverage": withCover,
-                "coverageDirectory": "output",
-                "collectCoverageFrom": ["src/**/*.js"]
+                "coverageDirectory": "test/output",
+                "collectCoverageFrom": ["src/**/*.js"],
+                "coverageThreshold": {
+                    "global": {
+                        "branches": 90,
+                        "functions": 90,
+                        "lines": 90,
+                        "statements": 90
+                    }
+                }
             }
         }));
 
+gulp.task("coveralls", ["test:cover"], () =>
+    gulp.src("test/output/**/lcov.info")
+        .pipe(gulpCoveralls()));
+
 gulp.task("test", () => runTest());
 gulp.task("test:cover", ["clean:testOutput"], () => runTest(true));
-
 gulp.task("default", ["build"]);

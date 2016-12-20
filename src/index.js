@@ -1,8 +1,7 @@
 "use strict";
 
-import path from "path";
 import through from "through2";
-import {isString, isFunction} from "./utils";
+import {isString, isFunction, getModuleFromAbsBasePath, showWarning} from "./utils";
 import jspmMappingReader from "./jspmMappingReader";
 import gulpJest from "gulp-jest";
 
@@ -20,7 +19,7 @@ const loadExistingJestConfig = (basePath, options) => {
 
     if (options.jestConfig) {
         if (isString(options.jestConfig)) { //load from file
-            config = require(path.join(basePath, options.jestConfig));
+            config = getModuleFromAbsBasePath(basePath, options.jestConfig);
             config = (isFunction(config) ? config() : config);
         }
         else {
@@ -35,7 +34,10 @@ const getModuleMappingsForJspm = (basePath, options) => {
     let mappings = jspmMappingReader(basePath, options);
 
     if (!mappings) {
-        console.warn("[gulp-jest-jspm-config]: didnt find any mappings for JSPM!");
+        if (options.displayWarnings) {
+            showWarning("[gulp-jest-jspm-config]: didnt find any mappings for JSPM!");
+        }
+
         mappings = {};
     }
 
@@ -71,6 +73,7 @@ export const getJestConfig = (basePath, options) => {
  *          @param options.loadSjsConfFile - whether to load the System JS config file (default: true)
  *          @param options.jspmPackages - location of jspm packages (default: "./jspm_packages")
  *          @param options.nodeModules - location of node modules dir (default: "./node_modules")
+ *          @param options.displayWarnings - whether plugin will output warnings to console (default: false)
  */
 export default (options) => {
     const myStream = through.obj((file, enc, cb) => {

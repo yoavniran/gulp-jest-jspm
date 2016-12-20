@@ -12,9 +12,13 @@ const isFunction = (val) => {
 const getModuleFromAbsBasePath = (base, modulePath) =>
     require(path.join(base, modulePath)); //load the systemjs configuration so its available to the build process
 
+const showWarning = (msg) =>{
+    console.warn(msg);
+};
 
 export {
     isString,
     isFunction,
-    getModuleFromAbsBasePath
+    getModuleFromAbsBasePath,
+    showWarning
 }
