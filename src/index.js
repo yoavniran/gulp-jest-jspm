@@ -68,6 +68,7 @@ export const getJestConfig = (basePath, options) => {
  *
  * @param options
  *          @param options.jestConfig - config object or string path to config json file (default: {})
+ *          @param options.jestOptions - config object for the Jest CLI (default: undefined)
  *          @param options.systemJs - where is system js located (default: "./jspm_packages/system")
  *          @param options.sjsConfigFile - where is the System JS config file located (default: "./config")
  *          @param options.loadSjsConfFile - whether to load the System JS config file (default: true)
@@ -79,6 +80,7 @@ export default (options) => {
     const myStream = through.obj((file, enc, cb) => {
 
         myStream.pipe(gulpJest({
+            ...options.jestOptions,
             config: getJestConfig(file.cwd, options)
         })); //run jest through the gulp-jest plugin
 

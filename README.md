@@ -86,6 +86,8 @@ In addition you can pass any of the following options to the plugin
 
 > jestConfig - config object or string path to config json file (default: {})
 
+> jestOPtions - config object passed to the Jest-CLI (for example debug: true) (default: undefined)
+
 > systemJs - where is system js located (default: "./jspm_packages/system")
 
 > sjsConfigFile - where is the System JS config file located (default: "./config")
