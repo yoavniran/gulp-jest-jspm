@@ -15,7 +15,7 @@ This is where this plugin comes in, it augements the [moduleDirectories ](https:
  
 ## Usage
 
-Install - 
+Install: 
 
 ```bash
 $ npm install --save-dev gulp-jest-jspm
@@ -55,13 +55,12 @@ Jest config can also be a module exporting an Object or a function that returns 
 ```javascript
 
 //test/client/jest.js
-
 module.export = () =>({
    debug: true,
     verbose: true
 });
 
-
+//gulpfile.js 
 gulp.task("jest", () => 
 	gulp.src("test/client") //where your tests are stored
         .pipe(gulpJestJspm({
@@ -72,7 +71,7 @@ gulp.task("jest", () =>
 Or you can pass jest configuration as an object
 ```javascript
 
-//gulpfile.js  
+//gulpfile.js 
 gulp.task("jest", () => 
     gulp.src("test/client") //where your tests are stored
         .pipe(gulpJestJspm({
@@ -102,6 +101,7 @@ In addition you can pass any of the following options to the plugin
 For example if your SystemJS files are located somewhere that is not the default you can do the following:
   
 ```javascript
+
 //gulpfile.js  
 gulp.task("jest", () => 
     gulp.src("test/client") //where your tests are stored
@@ -113,7 +113,6 @@ gulp.task("jest", () =>
 	           verbose: true
             }
         })));
-
 ```
 
 ### option 2 - continue using gulp-jest
@@ -135,4 +134,4 @@ gulp.task("jest", () => {
 
 ## License
 
-WTFPL - [![WTFPL](http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-1.png)](http://www.wtfpl.net/about/) Yoav Niran
+[![WTFPL](http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-1.png)](http://www.wtfpl.net/about/) Yoav Niran
