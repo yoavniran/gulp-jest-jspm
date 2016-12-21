@@ -59,6 +59,8 @@ describe("utils tests", () => {
         utils.showWarning("test");
         utils.showWarning();
 
+	    expect(console.warn).toHaveBeenCalledTimes(2);
+
         console.warn = orgConsoleWarn;
     });
 

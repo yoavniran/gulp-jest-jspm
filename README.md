@@ -109,7 +109,7 @@ gulp.task("jest", () =>
     gulp.src("test/client") //where your tests are stored
         .pipe(gulpJestJspm({
             systemJs: "./libs/systemjs/systemjs.min.js",
-            sjsConfigFile: "./dits/config.js",
+            sjsConfigFile: "./dist/config.js",
             jestConfig:{
 	           debug: true,
 	           verbose: true
@@ -126,7 +126,7 @@ Finally, if you're already using gulp-jest and don't wish to change to this plug
 //gulpfile.js
 gulp.task("jest", () => {
 	const jestConf = gulpJestJspm.getJestConfig(__dirname,
-        {jestConfig: "test/client/jest.json"}); //get the jest confi
+        {jestConfig: "test/client/jest.json"}); //get the jest config
 
 	return gulp.src("test/client")
     	.pipe(gulpJest({config: jestConf})); //pass it to gulp-jest
