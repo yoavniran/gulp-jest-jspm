@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "gulp test",
+    "test-cover": "gulp test:cover",
     "prepublish": "gulp"
   },
   "repository": {
