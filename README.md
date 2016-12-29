@@ -1,5 +1,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/yoavniran/gulp-jest-jspm/badge.svg?branch=master)](https://coveralls.io/github/yoavniran/gulp-jest-jspm?branch=master)
 [![npm Version](https://img.shields.io/npm/v/gulp-jest-jspm.svg)](https://www.npmjs.com/package/gulp=jest-jspm) 
+[![CircleCI](https://circleci.com/gh/yoavniran/gulp-jest-jspm/tree/master.svg?style=svg)](https://circleci.com/gh/yoavniran/gulp-jest-jspm/tree/master)
 
 # gulp-jest-jspm
 
