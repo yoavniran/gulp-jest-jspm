@@ -20,9 +20,10 @@ This is where this plugin comes in, it augements the [moduleDirectories ](https:
 Install: 
 
 ```bash
-$ npm install --save-dev gulp-jest-jspm
+$ npm install --save-dev gulp-jest-jspm jest-cli
 ```
-
+> (note that jest-cli is a peer-dependency and is required to be installed as well)
+ 
 In your gulpfile, require it:
 
 ```javascript
