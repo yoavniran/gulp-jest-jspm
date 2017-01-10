@@ -1,16 +1,16 @@
 describe("plugin tests", () => {
     "use strict";
 
-    let testResultType = "";
-    const throughObjResult = {"who": "stream"};
+    let mockTestResultType = "";
+    let mockThroughObjResult = {"who": "stream"};
 
     beforeAll(() => {
 
         jest.mock("through2", () => ({
-            obj: jest.fn(() => throughObjResult)
+            obj: jest.fn(() => mockThroughObjResult)
         }));
 
-        const testResults = {
+        const mockTestResults = {
             "notFound": false,
             "empty": {},
             "valid": {
@@ -36,7 +36,7 @@ describe("plugin tests", () => {
         };
 
         jest.mock("../src/jspmMappingReader", () =>
-            jest.fn(() => testResults[testResultType]));
+            jest.fn(() => mockTestResults[mockTestResultType ]));
 
         jest.mock("../src/utils", () => ({
             getModuleFromAbsBasePath: jest.fn()
@@ -56,7 +56,7 @@ describe("plugin tests", () => {
     });
 
     it("should return valid jest config for defaults", () => {
-        testResultType = "valid";
+	    mockTestResultType  = "valid";
 
         const testBasePath = "./bla",
             testOptions = {foo: "bar"},
@@ -98,7 +98,7 @@ describe("plugin tests", () => {
     });
 
     it("should return valid jest config for non-defaults", () => {
-        testResultType = "validShort";
+	    mockTestResultType  = "validShort";
 
         const testBasePath = "./bla",
             testOptions = {
@@ -130,7 +130,7 @@ describe("plugin tests", () => {
     });
 
     it("should return valid jest config augmenting configured jest file as json", () => {
-        testResultType = "validShort";
+	    mockTestResultType  = "validShort";
 
         const utils = require("../src/utils");
 
@@ -166,7 +166,7 @@ describe("plugin tests", () => {
     });
 
     it("should return valid jest config augmenting configured jest file as exported function", () => {
-        testResultType = "validShort";
+	    mockTestResultType  = "validShort";
 
         require("../src/utils").isString.mockImplementationOnce(() => true);  //make it load the jest conf "from file"
 
@@ -198,7 +198,7 @@ describe("plugin tests", () => {
     });
 
     it("should return valid jest config augmenting configured jest object", () => {
-        testResultType = "validShort";
+	    mockTestResultType  = "validShort";
 
         const testBasePath = "./bla",
             testOptions = {
@@ -228,7 +228,7 @@ describe("plugin tests", () => {
     });
 
     it("should return valid jest config for no jspm results", () => {
-        testResultType = "empty";
+	    mockTestResultType  = "empty";
 
         const testBasePath = "./bla",
             result = require("../src/index").getJestConfig(testBasePath, {});
@@ -244,7 +244,7 @@ describe("plugin tests", () => {
     });
 
     it("should return valid jest config for not found jspm ", () => {
-        testResultType = "notFound";
+	    mockTestResultType  = "notFound";
 
         const testBasePath = "./bla",
             result = require("../src/index").getJestConfig(testBasePath, {displayWarnings: true});
@@ -263,6 +263,6 @@ describe("plugin tests", () => {
 
     it("should return through object for plugin call", () => {
         const result = require("../src/index").default();
-        expect(result).toEqual(throughObjResult);
+        expect(result).toEqual(mockThroughObjResult);
     });
 });

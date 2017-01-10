@@ -38,9 +38,9 @@ pass the path to the jest config to be loaded:
 ```javascript
  
  //test/client/jest.json
- {
-    "debug": true,
-    "verbose": true
+ {    
+    "verbose": true,
+	 setupTestFrameworkScriptFile: "<rootDir>/test/setupTests.js"
  }
  
 
@@ -57,10 +57,11 @@ Jest config can also be a module exporting an Object or a function that returns 
 ```javascript
 
 //test/client/jest.js
-module.export = () =>({
-   debug: true,
-    verbose: true
+module.export = () =>({   
+    verbose: true,
+	setupTestFrameworkScriptFile: "<rootDir>/test/setupTests.js"
 });
+
 
 //gulpfile.js 
 gulp.task("jest", () => 
@@ -77,9 +78,9 @@ Or you can pass jest configuration as an object
 gulp.task("jest", () => 
     gulp.src("test/client") //where your tests are stored
         .pipe(gulpJestJspm({
-            jestConfig:{
-	           debug: true,
-	           	verbose: true
+            jestConfig:{	           
+	           	verbose: true,
+                setupTestFrameworkScriptFile: "<rootDir>/test/setupTests.js"
             }
         })));
 ```
@@ -90,9 +91,9 @@ In addition you can pass any of the following options to the plugin
 
 > jestOptions - config object passed to the Jest-CLI (for example debug: true) (default: undefined)
 
-> systemJs - where is system js located (default: "./jspm_packages/system")
+> systemJs - location of system js (default: "./jspm_packages/system")
 
-> sjsConfigFile - where is the System JS config file located (default: "./config")
+> sjsConfigFile - location of System JS config file (default: "./config")
 
 > loadSjsConfFile - whether to load the System JS config file (default: true)
 
@@ -112,9 +113,9 @@ gulp.task("jest", () =>
         .pipe(gulpJestJspm({
             systemJs: "./libs/systemjs/systemjs.min.js",
             sjsConfigFile: "./dist/config.js",
-            jestConfig:{
-	           debug: true,
-	           verbose: true
+            jestConfig:{	           
+	           verbose: true,
+	           setupTestFrameworkScriptFile: "<rootDir>/test/setupTests.js"
             }
         })));
 ```
