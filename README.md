@@ -1,5 +1,5 @@
 [![Coverage Status](https://coveralls.io/repos/github/yoavniran/gulp-jest-jspm/badge.svg?branch=master)](https://coveralls.io/github/yoavniran/gulp-jest-jspm?branch=master)
-[![npm Version](https://img.shields.io/npm/v/gulp-jest-jspm.svg)](https://www.npmjs.com/package/gulp=jest-jspm) 
+[![npm Version](https://img.shields.io/npm/v/gulp-jest-jspm.svg)](https://www.npmjs.com/package/gulp-jest-jspm) 
 [![CircleCI](https://circleci.com/gh/yoavniran/gulp-jest-jspm/tree/master.svg?style=svg)](https://circleci.com/gh/yoavniran/gulp-jest-jspm/tree/master)
 
 # gulp-jest-jspm
@@ -41,7 +41,7 @@ pass the path to the jest config to be loaded:
  //test/client/jest.json
  {    
     "verbose": true,
-	 setupTestFrameworkScriptFile: "<rootDir>/test/setupTests.js"
+	"setupTestFrameworkScriptFile": "<rootDir>/test/setupTests.js"
  }
  
 
@@ -88,21 +88,21 @@ gulp.task("jest", () =>
 
 In addition you can pass any of the following options to the plugin
 
-> jestConfig - config object or string path to config json file (default: {})
+> **jestConfig** - config object or string path to config json file (default: {})
 
-> jestOptions - config object passed to the Jest-CLI (for example debug: true) (default: undefined)
+> **jestOptions** - config object passed to the Jest-CLI (for example {debug: true}) (default: undefined)
 
-> systemJs - location of system js (default: "./jspm_packages/system")
+> **systemJs** - location of system js (default: "./jspm_packages/system")
 
-> sjsConfigFile - location of System JS config file (default: "./config")
+> **sjsConfigFile** - location of System JS config file (default: "./config")
 
-> loadSjsConfFile - whether to load the System JS config file (default: true)
+> **loadSjsConfFile** - whether to load the System JS config file (default: true)
 
-> jspmPackages - location of jspm packages (default: "./jspm_packages")
+> **jspmPackages** - location of jspm packages (default: "./jspm_packages")
 
-> nodeModules - location of node modules dir (default: "./node_modules")
+> **nodeModules** - location of node modules dir (default: "./node_modules")
 
-> displayWarnings - whether the plugin will output warnings to console (default: false)
+> **displayWarnings** - whether the plugin will output warnings to console (default: false)
 
 For example if your SystemJS files are located somewhere that is not the default you can do the following:
   

@@ -1,6 +1,6 @@
 {
   "name": "gulp-jest-jspm",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Gulp plugin for running Jest tests on JSPM/SystemJS apps",
   "main": "index.js",
   "scripts": {
