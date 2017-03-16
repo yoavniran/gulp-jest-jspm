@@ -139,6 +139,14 @@ gulp.task("jest", () => {
 
 > alternatively, you can use [jest-jspm](https://www.npmjs.com/package/jest-jspm) directly from your gulp file. Which is basically what this package does.
 
+## Change Log
+
+### 1.0.0
+
+* moved config generate to separate package: jest-jspm
+* allow depending on Jest-CLI >=18.0.1 (meaning also 19)
+
+
 ## License
 
 [![WTFPL](http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-1.png)](http://www.wtfpl.net/about/) Yoav Niran

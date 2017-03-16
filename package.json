@@ -1,6 +1,6 @@
 {
   "name": "gulp-jest-jspm",
-  "version": "0.1.5",
+  "version": "1.0.0",
   "description": "Gulp plugin for running Jest tests on JSPM/SystemJS apps",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,7 @@
   "license": "WTFPL",
   "dependencies": {
     "gulp-jest": "^1.0.0",
-    "jest-cli": "^18.1.0",
+    "jest-cli": ">=18.0.1",
     "jest-jspm": "^0.1.0",
     "through2": "^2.0.3"
   },
