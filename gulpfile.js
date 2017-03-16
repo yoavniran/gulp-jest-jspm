@@ -21,7 +21,7 @@ const runTest = (withCover) =>
             "verbose": true,
             "debug": false,
             "config": {
-                "testPathDirs": ["./test"],
+                "roots": ["./test"],
                 "collectCoverage": withCover,
                 "coverageDirectory": "test/output",
                 "collectCoverageFrom": ["src/**/*.js"]
