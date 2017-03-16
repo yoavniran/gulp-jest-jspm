@@ -12,7 +12,7 @@ The meaning of this is that SystemJS will hold a map of simplified names and map
   
 If you're also testing using the [Jest](https://facebook.github.io/jest/) framework you will quickly learn that Jest can't find the dependencies used by your modules since it doesn't know where SystemJS placed them.
 
-This is where this plugin comes in, it augements the [moduleDirectories ](https://facebook.github.io/jest/docs/configuration.html#moduledirectories-array-string) and [moduleNameMapper](https://facebook.github.io/jest/docs/configuration.html#modulenamemapper-object-string-string) configuration parameters with the info Jest needs to be able to find these aliased modules, whether they are downloaded or your own.
+This is where this plugin comes in, it augments the [moduleDirectories ](https://facebook.github.io/jest/docs/configuration.html#moduledirectories-array-string) and [moduleNameMapper](https://facebook.github.io/jest/docs/configuration.html#modulenamemapper-object-string-string) configuration parameters with the info Jest needs to be able to find these aliased modules, whether they are downloaded or your own.
     
  
 ## Usage
@@ -129,7 +129,7 @@ Finally, if you're already using gulp-jest and don't wish to change to this plug
 
 //gulpfile.js
 gulp.task("jest", () => {
-	const jestConf = gulpJestJspm.getJestConfig(__dirname,
+	const jestConf = gulpJestJspm.makeJestConfig(__dirname,
         {jestConfig: "test/client/jest.json"}); //get the jest config
 
 	return gulp.src("test/client")
@@ -137,6 +137,7 @@ gulp.task("jest", () => {
 });
 ```
 
+> alternatively, you can use [jest-jspm](https://www.npmjs.com/package/jest-jspm) directly from your gulp file. Which is basically what this package does.
 
 ## License
 

@@ -26,6 +26,7 @@
   "dependencies": {
     "gulp-jest": "^1.0.0",
     "jest-cli": "^18.1.0",
+    "jest-jspm": "^0.1.0",
     "through2": "^2.0.3"
   },
   "devDependencies": {
