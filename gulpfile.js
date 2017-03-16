@@ -24,15 +24,7 @@ const runTest = (withCover) =>
                 "testPathDirs": ["./test"],
                 "collectCoverage": withCover,
                 "coverageDirectory": "test/output",
-                "collectCoverageFrom": ["src/**/*.js"],
-                "coverageThreshold": {
-                    "global": {
-                        "branches": 90,
-                        "functions": 90,
-                        "lines": 90,
-                        "statements": 90
-                    }
-                }
+                "collectCoverageFrom": ["src/**/*.js"]
             }
         }));
 
